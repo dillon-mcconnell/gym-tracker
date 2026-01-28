@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Gym Tracker">
+  <meta name="description" content="Track your gym attendance with an interactive calendar">
+  
+  <!-- Apple Touch Icons -->
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="icon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icon-192.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="icon-192.png">
+  
+  <!-- Manifest -->
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="icon-192.png">
+  
+  <title>Gym Tracker</title>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overscroll-behavior: none;
+    }
+    
+    #root {
+      min-height: 100vh;
+    }
+    
+    input, button, textarea {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  
+  <!-- Load React and ReactDOM from CDN -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  
+  <!-- Load Babel standalone for JSX transformation -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <!-- Load the app -->
+  <script type="text/babel" src="gym-tracker.jsx"></script>
+  
+  <script type="text/babel">
+    // Mock storage API for development/testing
+    if (!window.storage) {
+      const mockStorage = {
+        data: {},
+        async get(key) {
+          const value = localStorage.getItem(key);
+          return value ? { key, value, shared: false } : null;
+        },
+        async set(key, value) {
+          localStorage.setItem(key, value);
+          return { key, value, shared: false };
+        },
+        async delete(key) {
+          localStorage.removeItem(key);
+          return { key, deleted: true, shared: false };
+        },
+        async list(prefix) {
+          const keys = Object.keys(localStorage).filter(k => !prefix || k.startsWith(prefix));
+          return { keys, prefix, shared: false };
+        }
+      };
+      window.storage = mockStorage;
+    }
+    
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(GymTracker));
+    
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js')
+          .then(reg => console.log('Service Worker registered'))
+          .catch(err => console.log('Service Worker registration failed:', err));
+      });
+    }
+  </script>
+</body>
+</html>
