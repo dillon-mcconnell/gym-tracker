@@ -1,7 +1,14 @@
 {
   "gymDates": [],
   "playlists": {
-    "Upper Body": [],
-    "Full Body": []
+    "Upper Body": [
+      {
+        "name": "Chest Press",
+        "weight": "50",
+        "reps": "8",
+        "sets": "3",
+        "id": 1769808143481
+      }
+    ]
   }
 }
