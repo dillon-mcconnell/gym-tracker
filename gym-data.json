@@ -1,43 +1,6 @@
 {
   "gymDates": [],
   "playlists": {
-    "Upper Body": [
-      {
-        "name": "Chest Press",
-        "weight": "50",
-        "reps": "8",
-        "sets": "3",
-        "id": 1769808143481
-      },
-      {
-        "name": "Overhand Lat Pulldown",
-        "weight": "85",
-        "reps": "8",
-        "sets": "3",
-        "id": 1769808160145
-      },
-      {
-        "name": "Seated Cable Row",
-        "weight": "85",
-        "reps": "8",
-        "sets": "3",
-        "id": 1769808173869
-      },
-      {
-        "name": "Lateral Raise",
-        "weight": "12",
-        "reps": "8",
-        "sets": "3",
-        "id": 1769808194640
-      },
-      {
-        "name": "Tricep Rope Pulldown",
-        "weight": "25",
-        "reps": "8",
-        "sets": "3",
-        "id": 1769808216608
-      }
-    ],
     "Upper Body 1": [
       {
         "name": "Chest Press",
