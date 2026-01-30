@@ -38,6 +38,14 @@
         "id": 1769808216608
       }
     ],
-    "Upper Body 1": []
+    "Upper Body 1": [
+      {
+        "name": "Chest Press",
+        "weight": "50",
+        "reps": "8",
+        "sets": "E",
+        "id": 1769808389851
+      }
+    ]
   }
 }
