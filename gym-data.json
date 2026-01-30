@@ -6,7 +6,7 @@
         "name": "Chest Press",
         "weight": "50",
         "reps": "8",
-        "sets": "",
+        "sets": "3",
         "id": 1769808389851
       },
       {
@@ -26,7 +26,7 @@
       {
         "name": "Lateral Raise",
         "weight": "12",
-        "reps": "3",
+        "reps": "",
         "sets": "8",
         "id": 1769808439886
       },
